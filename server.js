@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');  // Add this line
 
 const app = express();
 const db = new sqlite3.Database(':memory:');
@@ -10,6 +11,8 @@ const PORT = 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(cors());  // Add this line
 
 // JWT Secret
 const JWT_SECRET = 'your_jwt_secret';
